@@ -3,9 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 
 function Square(props) {
+  let className =`squere`;
+  // if (this.props.xIsNext) {
+  //   className += ' red';
+  // }
    return (
-     <button className="square" onClick={props.onClick}>
-       {props.value}
+     <button className={className} onClick={props.onClick}>
+      
      </button>
    );
  }
@@ -25,7 +29,7 @@ function Square(props) {
      if (calculateWinner(squares) || squares[i]) {
        return;
      }
-     squares[i] = this.state.xIsNext ? 'X' : 'O';
+     squares[i] = this.state.xIsNext ? 'red' : 'green';
      this.setState({
        squares: squares,
        xIsNext: !this.state.xIsNext,
@@ -48,7 +52,7 @@ function Square(props) {
      if (winner) {
        status = 'Winner: ' + winner;
      } else {
-       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+       status = 'Next player: ' + (this.state.xIsNext ? 'red' : 'green');
      }
  
      return (
@@ -137,10 +141,16 @@ function Square(props) {
           if (squares[lines[i][j]] === squares[lines[i][j] + 1] && squares[lines[i][j]]=== squares[lines[i][j]+2]) 
          {
         console.log("dd");
-        }else{
-          if(squares[lines[i][j]]===squares[lines[i][j]+6] &&squares[lines[i][j]]===squares[lines[i][j]+12] ){
+        return squares[lines[i][j]]
+        }else if((squares[lines[i][j]]===squares[lines[i][j]+6] &&squares[lines[i][j]]===squares[lines[i][j]+12] )){
             console.log("kyky")
-          }
+            return squares[lines[i][j]]
+        }else if( (squares[lines[i][j]]===squares[lines[i][j]+5] &&squares[lines[i][j]]===squares[lines[i][j]+10] )){
+            console.log("vert ")
+            return squares[lines[i][j]]
+        }else if(squares[lines[i][j]]===squares[lines[i][j]+4] &&squares[lines[i][j]]===squares[lines[i][j]+8] ){
+          console.log("dig")
+          return squares[lines[i][j]]
         }
         }
          
