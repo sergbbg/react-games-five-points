@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 
 function Square(props) {
-  let className =`squere`;
+  let className =`squere  `;
   // if (this.props.xIsNext) {
   //   className += ' red';
   // }
+  const t = props.valuel;
    return (
-     <button className={className} onClick={props.onClick}>
+     <button className={className + props.value} onClick={props.onClick}>
       
      </button>
    );
@@ -20,6 +21,7 @@ function Square(props) {
      this.state = {
        squares: Array(9).fill(null),
        xIsNext: true,
+       style: '',
      };
    }
    
@@ -34,6 +36,7 @@ function Square(props) {
        squares: squares,
        xIsNext: !this.state.xIsNext,
        i:0,
+       style:this.value,
      });
    }
  
